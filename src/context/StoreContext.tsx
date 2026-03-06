@@ -133,9 +133,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
                 setCustomerProfile(null);
                 setIsCustomerLoggedIn(false);
             }
-        } catch (err) {
+        } catch (err: any) {
             console.error("Profile fetch exception:", err);
-            toast.error("Network timeout fetching profile. Please login again.");
+            toast.error(err.message || "Network error fetching profile. Please login again.");
             await supabase.auth.signOut();
             setCustomerProfile(null);
             setIsCustomerLoggedIn(false);

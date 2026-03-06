@@ -10,5 +10,13 @@ if (!supabaseUrl || !supabaseAnonKey) {
 // Fallback to dummy URLs so the app doesn't fatally crash on boot and show a white screen
 export const supabase = createClient(
     supabaseUrl || 'https://placeholder-project.supabase.co',
-    supabaseAnonKey || 'placeholder-key'
+    supabaseAnonKey || 'placeholder-key',
+    {
+        auth: {
+            storageKey: 'telugu-ruchulu-auth-token', // Custom key to bypass stuck LockManager locks
+            autoRefreshToken: true,
+            persistSession: true,
+            detectSessionInUrl: true
+        }
+    }
 );
