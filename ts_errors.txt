@@ -1,0 +1,11 @@
+﻿src/components/checkout/CustomerAuthModal.tsx(25,11): error TS6198: All destructured elements are unused.
+src/components/checkout/CustomerOrders.tsx(5,29): error TS6133: 'CardHeader' is declared but its value is never read.
+src/components/checkout/CustomerOrders.tsx(5,41): error TS6133: 'CardTitle' is declared but its value is never read.
+src/components/checkout/CustomerOrders.tsx(7,40): error TS6133: 'ChevronRight' is declared but its value is never read.
+src/components/checkout/CustomerOrders.tsx(8,1): error TS6133: 'Button' is declared but its value is never read.
+src/components/checkout/CustomerOrders.tsx(19,27): error TS6133: 'error' is declared but its value is never read.
+src/context/CartContext.tsx(20,17): error TS2345: Argument of type '(prevCart: CartItem[]) => (CartItem | { id: number; name: string; price: number; quantity: number; image: string | undefined; })[]' is not assignable to parameter of type 'SetStateAction<CartItem[]>'.
+  Type '(prevCart: CartItem[]) => (CartItem | { id: number; name: string; price: number; quantity: number; image: string | undefined; })[]' is not assignable to type '(prevState: CartItem[]) => CartItem[]'.
+    Type '(CartItem | { id: number; name: string; price: number; quantity: number; image: string | undefined; })[]' is not assignable to type 'CartItem[]'.
+      Type 'CartItem | { id: number; name: string; price: number; quantity: number; image: string | undefined; }' is not assignable to type 'CartItem'.
+        Type '{ id: number; name: string; price: number; quantity: number; image: string | undefined; }' is missing the following properties from type 'CartItem': category, isVeg, rating
