@@ -16,7 +16,9 @@ export const supabase = createClient(
             storageKey: 'telugu-ruchulu-auth-token', // Custom key to bypass stuck LockManager locks
             autoRefreshToken: true,
             persistSession: true,
-            detectSessionInUrl: true
+            detectSessionInUrl: true,
+            // Bypass the browser LockManager to fix 10000ms freeze bug
+            lock: (_name: string, _acquireTimeout: number, acquire: () => Promise<any>) => acquire()
         }
     }
 );
