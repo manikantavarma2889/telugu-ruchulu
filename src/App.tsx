@@ -11,8 +11,7 @@ import { useState, useEffect } from "react";
 import { CustomerAuthModal } from "@/components/checkout/CustomerAuthModal";
 
 function AppContent() {
-    const { isAdminLoggedIn, isCustomerLoggedIn } = useStore();
-    const [showAuthModal, setShowAuthModal] = useState(false);
+    const { isAdminLoggedIn, isCustomerLoggedIn, showAuthModal, setShowAuthModal } = useStore();
 
     useEffect(() => {
         // Only trigger the auto-prompt if not an admin and not logged in as a customer

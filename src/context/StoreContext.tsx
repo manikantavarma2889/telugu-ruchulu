@@ -15,6 +15,8 @@ interface StoreContextType {
     customerProfile: CustomerProfile | null;
     isCustomerLoggedIn: boolean;
     logoutCustomer: () => void;
+    showAuthModal: boolean;
+    setShowAuthModal: (show: boolean) => void;
 
     menuItems: MenuItem[];
     addMenuItem: (item: Omit<MenuItem, 'id'>) => void;
@@ -40,6 +42,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     // Customer Auth State
     const [customerProfile, setCustomerProfile] = useState<CustomerProfile | null>(null);
     const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
+    const [showAuthModal, setShowAuthModal] = useState(false);
 
     const [location, setLocation] = useState<string>(() => {
         return localStorage.getItem('userLocation') || 'Chennai';
@@ -380,6 +383,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     return (
         <StoreContext.Provider value={{
             customerProfile, isCustomerLoggedIn, logoutCustomer,
+            showAuthModal, setShowAuthModal,
             userRole, setUserRole,
             isAdminLoggedIn, setIsAdminLoggedIn,
             menuItems, addMenuItem, updateMenuItem, deleteMenuItem,

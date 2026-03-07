@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { CartItem, MenuItem } from '../types';
 import { toast } from 'sonner';
+import { useStore } from './StoreContext';
 
 interface CartContextType {
     cart: CartItem[];
@@ -15,8 +16,15 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
     const [cart, setCart] = useState<CartItem[]>([]);
+    const { isCustomerLoggedIn, setShowAuthModal } = useStore();
 
     const addToCart = (item: MenuItem) => {
+        if (!isCustomerLoggedIn) {
+            toast.info("Please login to order food.");
+            setShowAuthModal(true);
+            return;
+        }
+
         setCart(prevCart => {
             const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
             if (existingItem) {
