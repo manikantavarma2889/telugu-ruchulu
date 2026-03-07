@@ -21,37 +21,41 @@ export function AdminAuth() {
         e.preventDefault();
         setLoading(true);
 
-        if (mode === "signup") {
-            const { error } = await supabase.auth.signUp({
-                email,
-                password,
-            });
+        const forceUnlock = setTimeout(() => {
+            setLoading(false);
+            toast.error("The request took too long. Please check your internet connection.");
+        }, 15000);
 
-            if (error) {
-                toast.error(error.message);
-                setLoading(false);
-                return;
+        try {
+            if (mode === "signup") {
+                const { error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                });
+
+                if (error) throw error;
+
+                toast.success("Account created! You can now log in.");
+                setMode("login");
+            } else {
+                const { error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password,
+                });
+
+                if (error) throw error;
+
+                setIsAdminLoggedIn(true);
+                setUserRole("admin");
+                toast.success("Welcome back, Admin!");
             }
-
-            toast.success("Account created! You can now log in.");
-            setMode("login");
-        } else {
-            const { error } = await supabase.auth.signInWithPassword({
-                email,
-                password,
-            });
-
-            if (error) {
-                toast.error(error.message);
-                setLoading(false);
-                return;
-            }
-
-            setIsAdminLoggedIn(true);
-            setUserRole("admin");
-            toast.success("Welcome back, Admin!");
+        } catch (error: any) {
+            console.error("Admin Auth Error:", error);
+            toast.error(error.message || "An error occurred during authentication.");
+        } finally {
+            clearTimeout(forceUnlock);
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     return (
