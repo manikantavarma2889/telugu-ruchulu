@@ -48,6 +48,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         return localStorage.getItem('userLocation') || 'Chennai';
     });
 
+    useEffect(() => {
+        localStorage.setItem('userLocation', location);
+    }, [location]);
+
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const [orders, setOrders] = useState<Order[]>([]);
     const [newOrdersCount, setNewOrdersCount] = useState(0);
@@ -56,6 +60,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         fetchMenu();
         fetchOrders();
+
+        if (!localStorage.getItem('hasSeenLocationPrompt')) {
+            localStorage.setItem('hasSeenLocationPrompt', 'true');
+            setTimeout(() => {
+                detectLocation(true);
+            }, 1000);
+        }
 
         // 1. Initial Auth Check
         checkUserSession();
@@ -198,9 +209,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         setOrders(data.map(mapDbOrderToOrder));
     };
 
-    const detectLocation = () => {
+    const detectLocation = (isAutoPrompt = false) => {
         if ("geolocation" in navigator) {
-            toast.info("Detecting your location...", { duration: 2000 });
+            if (!isAutoPrompt) {
+                toast.info("Detecting your location...", { duration: 2000 });
+            }
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const lat = position.coords.latitude;
@@ -213,12 +226,16 @@ export function StoreProvider({ children }: { children: ReactNode }) {
                     }
                 },
                 (error) => {
-                    toast.error("Geolocation failed. Please select manually.");
-                    console.error("Location error:", error);
+                    if (!isAutoPrompt) {
+                        toast.error("Geolocation failed. Defaulting to manual selection.");
+                        console.error("Location error:", error);
+                    }
                 }
             );
         } else {
-            toast.error("Geolocation is not supported by your browser.");
+            if (!isAutoPrompt) {
+                toast.error("Geolocation is not supported by your browser.");
+            }
         }
     };
 
