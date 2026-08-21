@@ -12,8 +12,6 @@
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
   [![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
-  [🌐 Live Demo](https://telugu-ruchulu.vercel.app/) • [✨ Features](#-key-features) • [📹 Demo Video](#-demo-video) • [🚀 Getting Started](#-getting-started)
-
 </div>
 
 ---
