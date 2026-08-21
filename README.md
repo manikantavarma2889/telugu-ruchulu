@@ -25,12 +25,6 @@
 
 ---
 
-## 📹 Demo Video
-
-<video src="./assets/Projsamp.mp4" controls width="100%" autoplay loop muted playsinline></video>
-
-
-
 
 ---
 
