@@ -95,9 +95,8 @@ Telugu Ruchulu is a React + TypeScript e-commerce application designed to follow
 - Enable Windows High Contrast/Forced Colors and check that controls remain distinguishable.
 - Enable reduced motion in the operating system and confirm animations are minimized.
 
-## Test record template
+## Test record
 
-Copy this table for each real test session:
 
 | Field | Value |
 |---|---|
@@ -119,12 +118,3 @@ Copy this table for each real test session:
 | Defects discovered | |
 | Retest result | |
 
-## Suggested resume wording
-
-Only use this wording after you personally complete the test:
-
-> Implemented WCAG-oriented accessibility improvements across a React e-commerce application and manually tested key user flows with NVDA, including keyboard navigation, headings/landmarks, forms, dialogs, dynamic cart announcements, and admin data tables.
-
-Until manual testing is completed, use:
-
-> Implemented WCAG-oriented accessibility improvements and prepared an NVDA-based assistive technology testing plan for key e-commerce user flows.
