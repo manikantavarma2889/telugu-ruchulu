@@ -25,7 +25,7 @@ The project also includes a focused accessibility engineering layer based on WCA
 ### Main Interfaces
 
 - **Customer Storefront:** Browse dishes, search products, filter categories, manage the cart, authenticate, and place orders.
-- **Admin Dashboard:** Manage menu inventory, update prices and availability, and review customer orders through protected admin routes.
+- **Admin Dashboard:** Manage menu inventory, update prices and availability, review customer orders, and visualize order analytics.
 
 ---
 
@@ -46,7 +46,15 @@ The project also includes a focused accessibility engineering layer based on WCA
 - 🍽️ Add, edit, and delete menu items
 - 💰 Update item prices and availability
 - 📊 View order information and update order status
+- 📈 Revenue and order-status analytics using Recharts
 - 🔑 Role-aware navigation and authentication flow
+
+### Data and Testing
+
+- ⚡ **TanStack Query:** Query lifecycle, caching, refetching, and invalidation for Supabase-backed menu and order data
+- 📊 **Recharts:** Responsive admin analytics for revenue and order status
+- 🧪 **Vitest:** Unit tests for reusable order analytics logic
+- 🎭 **Playwright:** End-to-end tests for the customer storefront
 
 ### Accessibility Engineering
 
@@ -94,6 +102,10 @@ For the detailed test record and testing procedure, see [`ACCESSIBILITY.md`](./A
 - **Animations:** Framer Motion
 - **Backend and Database:** Supabase
 - **Routing:** React Router DOM v6
+- **Server State:** TanStack Query
+- **Data Visualization:** Recharts
+- **Unit Testing:** Vitest
+- **End-to-End Testing:** Playwright
 - **Icons and Notifications:** Lucide React and Sonner
 - **Accessibility Focus:** Semantic HTML, WCAG-oriented patterns, ARIA, keyboard support, and NVDA validation
 
@@ -145,10 +157,15 @@ Ensure the following are installed:
 ### Available Scripts
 
 ```bash
-npm run dev       # Start the Vite development server
-npm run build     # Type-check and create a production build
-npm run lint      # Run ESLint checks
-npm run preview   # Preview the production build locally
+npm run dev          # Start the Vite development server
+npm run build        # Type-check and create a production build
+npm run lint         # Run ESLint checks
+npm run test         # Run Vitest unit tests
+npm run test:watch   # Run Vitest in watch mode
+npm run test:coverage # Run Vitest with coverage
+npm run e2e          # Run Playwright end-to-end tests
+npm run e2e:ui       # Open Playwright UI mode
+npm run preview      # Preview the production build locally
 ```
 
 ---
