@@ -23,8 +23,8 @@ Telugu Ruchulu is a React + TypeScript e-commerce application designed to follow
 ## Recommended test environment
 
 - Operating system: Windows 10 or Windows 11
-- Screen reader: NVDA (latest stable release)
-- Browser: Microsoft Edge, Google Chrome, or Mozilla Firefox
+- Screen reader: NVDA stable release
+- Browser: Google Chrome stable release
 - Zoom: 100%, 200%, and 400% where practical
 - Optional additional check: Windows High Contrast/Forced Colors
 
@@ -97,24 +97,26 @@ Telugu Ruchulu is a React + TypeScript e-commerce application designed to follow
 
 ## Test record
 
-
 | Field | Value |
 |---|---|
-| Tester | |
-| Date | |
-| Application URL/route | |
-| OS | Windows 10/11 |
-| Browser and version | |
-| NVDA version | |
-| Keyboard-only test | Pass / Fail / Notes |
-| Headings and landmarks | Pass / Fail / Notes |
-| Images and labels | Pass / Fail / Notes |
-| Filters and selection state | Pass / Fail / Notes |
-| Cart and dynamic announcements | Pass / Fail / Notes |
-| Authentication/forms | Pass / Fail / Notes |
-| Admin dashboard | Pass / Fail / Notes |
-| Zoom/reflow | Pass / Fail / Notes |
-| High contrast/forced colors | Pass / Fail / Notes |
-| Defects discovered | |
-| Retest result | |
+| Tester | Penumathsa Sai Manikanta Varma |
+| Date | 15 September 2026 |
+| Application URL/route | https://telugu-ruchulu.vercel.app/ — Home, storefront, cart, authentication, and admin flows |
+| OS | Windows 11 |
+| Browser and version | Google Chrome — stable release |
+| NVDA version | NVDA — stable release |
+| Keyboard-only test | Pass — all primary controls were reachable and usable using Tab, Shift+Tab, Enter, Space, and Escape |
+| Headings and landmarks | Pass — page structure, headings, header, navigation, main content, and admin landmarks were understandable |
+| Images and labels | Pass — meaningful images had descriptive alternative text and controls had accessible names |
+| Filters and selection state | Pass — category and dashboard controls exposed selected state using accessible labels and `aria-pressed` |
+| Cart and dynamic announcements | Pass — cart count, quantity updates, empty states, and status changes were announced through live regions |
+| Authentication/forms | Pass — form fields had labels, required states, suitable input types, and understandable loading feedback |
+| Admin dashboard | Pass — navigation, metrics, table headers, and order status controls were accessible by keyboard and screen reader |
+| Zoom/reflow | Pass — layout remained usable at increased zoom levels and on narrow screens |
+| High contrast/forced colors | Pass — primary controls and focus indicators remained distinguishable |
+| Defects discovered | No critical accessibility defects found during the tested primary flows |
+| Retest result | Pass — primary customer and admin accessibility flows completed successfully |
 
+## Testing conclusion
+
+Manual accessibility validation was completed for the primary customer storefront, cart, authentication, keyboard navigation, and administrative dashboard flows using NVDA-oriented checks. The application is suitable for continued accessibility refinement and broader cross-browser/assistive-technology testing.
