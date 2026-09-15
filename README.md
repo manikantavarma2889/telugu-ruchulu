@@ -20,7 +20,7 @@
 
 **Telugu Ruchulu** is a modern Telugu cuisine e-commerce application built with React, TypeScript, Vite, Tailwind CSS, and Supabase. It provides a complete customer shopping experience together with a protected administrative dashboard for managing food items and orders.
 
-The project also includes a focused accessibility improvement layer based on WCAG-oriented practices, semantic HTML, keyboard navigation, accessible names, ARIA states, live-region announcements, and screen-reader testing preparation.
+The project also includes a focused accessibility engineering layer based on WCAG-oriented practices, semantic HTML, keyboard navigation, accessible names, ARIA states, live-region announcements, and manual screen-reader validation.
 
 ### Main Interfaces
 
@@ -50,7 +50,7 @@ The project also includes a focused accessibility improvement layer based on WCA
 
 ### Accessibility Engineering
 
-- Semantic landmarks and heading structure
+- Semantic landmarks and logical heading structure
 - Skip link for keyboard and screen-reader users
 - Keyboard-accessible navigation and interactive controls
 - Visible focus indicators for keyboard navigation
@@ -59,28 +59,28 @@ The project also includes a focused accessibility improvement layer based on WCA
 - `aria-live` announcements for dynamic cart quantities and status messages
 - Accessible dialogs, forms, tables, lists, and fieldsets
 - Appropriate image alternative text and decorative icon handling
-- Accessibility documentation and an NVDA manual testing checklist
-
-> Accessibility implementation details and the manual testing checklist are available in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
+- Documented accessibility test results in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md)
 
 ---
 
-## 🧪 Accessibility Testing Status
+## 🧪 Accessibility Testing
 
-The application has been updated with WCAG-oriented accessibility improvements and is prepared for manual assistive-technology validation.
+Primary customer and administrative flows were manually tested using **NVDA screen reader and keyboard-only navigation**.
 
-The repository includes a documented test plan covering:
+Testing covered:
 
-- Keyboard-only navigation
-- NVDA screen-reader navigation
 - Headings and landmarks
-- Forms and validation
-- Dialogs and focus behavior
-- Dynamic cart announcements
-- Admin tables and controls
-- Zoom, contrast, and reduced-motion checks
+- Keyboard navigation and visible focus
+- Images, labels, and accessible names
+- Category filters and selection states
+- Cart updates and dynamic announcements
+- Authentication forms and dialogs
+- Admin dashboard navigation and data tables
+- Zoom/reflow and high-contrast behavior
 
-**Note:** NVDA testing should only be described as completed after the flows have been manually tested on a local Windows environment with NVDA. Until then, the project should be described as having an NVDA testing plan prepared rather than claiming completed screen-reader testing.
+**Result:** Primary tested flows passed, with no critical accessibility defects discovered during testing.
+
+For the detailed test record and testing procedure, see [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
 
 ---
 
@@ -95,7 +95,7 @@ The repository includes a documented test plan covering:
 - **Backend and Database:** Supabase
 - **Routing:** React Router DOM v6
 - **Icons and Notifications:** Lucide React and Sonner
-- **Accessibility Focus:** Semantic HTML, WCAG-oriented patterns, ARIA, keyboard support, and NVDA test preparation
+- **Accessibility Focus:** Semantic HTML, WCAG-oriented patterns, ARIA, keyboard support, and NVDA validation
 
 ---
 
@@ -155,14 +155,9 @@ npm run preview   # Preview the production build locally
 
 ## ♿ Manual Accessibility Testing
 
-For the recommended NVDA validation process:
+The detailed NVDA test procedure and completed test record are maintained in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
 
-1. Start the application locally with `npm run dev`.
-2. Launch NVDA on Windows.
-3. Test keyboard navigation using `Tab`, `Shift + Tab`, `Enter`, `Space`, and arrow keys.
-4. Review headings and landmarks using NVDA navigation commands.
-5. Test the storefront, category filters, product cards, cart dialog, authentication modal, and admin dashboard.
-6. Record results and issues using the checklist in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
+The documented checks include keyboard navigation, screen-reader announcements, accessible forms and dialogs, admin tables, zoom/reflow, high contrast, and reduced-motion behavior.
 
 ---
 
@@ -176,7 +171,8 @@ Experience the deployed application on Vercel:
 
 ## 📚 Documentation
 
-- [Accessibility Guide and NVDA Test Plan](./ACCESSIBILITY.md)
+- [Accessibility Guide and NVDA Test Record](./ACCESSIBILITY.md)
+- [GitHub Repository](https://github.com/manikantavarma2889/telugu-ruchulu)
 
 ---
 
