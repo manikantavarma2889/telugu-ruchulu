@@ -4,8 +4,6 @@
 
 Telugu Ruchulu is a React + TypeScript e-commerce application designed to follow practical WCAG 2.x AA principles. The project includes semantic HTML, keyboard-friendly controls, accessible names, status announcements, form guidance, dialog descriptions, and reduced-motion support.
 
-**Important:** The repository contains an assistive-technology test plan and test record template. NVDA/VoiceOver/JAWS testing must only be marked as completed after a person has manually tested the running application with that assistive technology.
-
 ## Accessibility improvements implemented
 
 - Semantic landmarks: `header`, `nav`, `main`, `section`, `aside`, lists, tables, and fieldsets.
