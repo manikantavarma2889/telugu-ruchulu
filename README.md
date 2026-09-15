@@ -11,6 +11,10 @@
   [![Vite](https://img.shields.io/badge/Vite-5.1-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
   [![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+  [![TanStack Query](https://img.shields.io/badge/TanStack_Query-v5-FF4154?style=for-the-badge)](https://tanstack.com/query)
+  [![Recharts](https://img.shields.io/badge/Recharts-2.15.4-22B5BF?style=for-the-badge)](https://recharts.org/)
+  [![Playwright](https://img.shields.io/badge/Playwright-1.55-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
+  [![Vitest](https://img.shields.io/badge/Vitest-2.1.9-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 
 </div>
 
@@ -18,14 +22,14 @@
 
 ## 📖 About The Project
 
-**Telugu Ruchulu** is a modern Telugu cuisine e-commerce application built with React, TypeScript, Vite, Tailwind CSS, and Supabase. It provides a complete customer shopping experience together with a protected administrative dashboard for managing food items and orders.
+**Telugu Ruchulu** is a modern Telugu cuisine e-commerce application built with React, TypeScript, Vite, Tailwind CSS, and Supabase. It provides a complete customer shopping experience together with a protected administrative dashboard for managing food items, orders, and operational analytics.
 
-The project also includes a focused accessibility engineering layer based on WCAG-oriented practices, semantic HTML, keyboard navigation, accessible names, ARIA states, live-region announcements, and manual screen-reader validation.
+The project combines production-focused frontend patterns with automated testing and accessibility engineering. TanStack Query is used for server-state management, Recharts powers admin data visualization, Vitest covers reusable business logic, and Playwright covers browser-level customer flows.
 
 ### Main Interfaces
 
 - **Customer Storefront:** Browse dishes, search products, filter categories, manage the cart, authenticate, and place orders.
-- **Admin Dashboard:** Manage menu inventory, update prices and availability, and review customer orders through protected admin routes.
+- **Admin Dashboard:** Manage menu inventory, update prices and availability, review customer orders, update order status, and view analytics.
 
 ---
 
@@ -45,8 +49,22 @@ The project also includes a focused accessibility engineering layer based on WCA
 - 🛡️ Protected administrator dashboard
 - 🍽️ Add, edit, and delete menu items
 - 💰 Update item prices and availability
-- 📊 View order information and update order status
+- 📋 View customer orders and update order status
+- 📈 Revenue and order-status analytics using Recharts
 - 🔑 Role-aware navigation and authentication flow
+
+### Data Management & Application Architecture
+
+- ⚡ **TanStack Query:** Manages server-state lifecycle for menu and order data with query caching, refetching, loading/error handling, and invalidation after mutations.
+- 🗃️ **Supabase:** Provides authentication and the application database/backend services.
+- 🧭 **React Router:** Handles customer and protected administrative navigation.
+- 🧩 **Radix UI:** Provides accessible primitives for dialogs, forms, selects, toasts, and other interactive components.
+
+### Testing
+
+- 🧪 **Vitest:** Unit tests for reusable order analytics/business logic, with V8 coverage support.
+- 🎭 **Playwright:** Browser-based end-to-end testing for the customer storefront and critical user flows.
+- 🔍 **ESLint + TypeScript:** Static code-quality and type-checking through the existing build/lint workflow.
 
 ### Accessibility Engineering
 
@@ -86,16 +104,45 @@ For the detailed test record and testing procedure, see [`ACCESSIBILITY.md`](./A
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework:** React 18
-- **Language:** TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **UI Components:** Radix UI
-- **Animations:** Framer Motion
-- **Backend and Database:** Supabase
-- **Routing:** React Router DOM v6
-- **Icons and Notifications:** Lucide React and Sonner
-- **Accessibility Focus:** Semantic HTML, WCAG-oriented patterns, ARIA, keyboard support, and NVDA validation
+### Frontend
+
+- React 18
+- TypeScript 5.3
+- Vite 5.1
+- Tailwind CSS 3.4
+- React Router DOM 6
+- Radix UI
+- Framer Motion
+- Lucide React
+- Sonner
+
+### Backend & Data
+
+- Supabase
+- Supabase Authentication
+- Supabase database services
+- TanStack Query v5 for server-state management
+
+### Data Visualization
+
+- Recharts 2.15.4
+- Responsive admin revenue and order-status charts
+
+### Testing & Quality
+
+- Vitest 2.1.9
+- V8 coverage via `@vitest/coverage-v8`
+- Playwright 1.55
+- ESLint
+- TypeScript type-checking
+
+### Accessibility
+
+- Semantic HTML
+- WCAG-oriented patterns
+- ARIA states and live regions
+- Keyboard navigation
+- NVDA validation
 
 ---
 
@@ -145,10 +192,35 @@ Ensure the following are installed:
 ### Available Scripts
 
 ```bash
-npm run dev       # Start the Vite development server
-npm run build     # Type-check and create a production build
-npm run lint      # Run ESLint checks
-npm run preview   # Preview the production build locally
+npm run dev            # Start the Vite development server
+npm run build          # Type-check and create a production build
+npm run lint           # Run ESLint checks
+npm run test           # Run Vitest unit tests
+npm run test:watch     # Run Vitest in watch mode
+npm run test:coverage  # Run Vitest with V8 coverage
+npm run e2e            # Run Playwright end-to-end tests
+npm run e2e:ui         # Open Playwright UI mode
+npm run preview        # Preview the production build locally
+```
+
+### Running Playwright Locally
+
+After installing dependencies, install the required browser:
+
+```bash
+npx playwright install chromium
+```
+
+Then run:
+
+```bash
+npm run e2e
+```
+
+For interactive debugging:
+
+```bash
+npm run e2e:ui
 ```
 
 ---
