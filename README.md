@@ -18,81 +18,171 @@
 
 ## 📖 About The Project
 
-**Telugu Ruchulu** is a modern, high-performance web application dedicated to showcasing and delivering authentic Telugu culinary delicacies. Built with **React 18**, **TypeScript**, and **Vite**, the platform provides a seamless dual-interface experience:
+**Telugu Ruchulu** is a modern Telugu cuisine e-commerce application built with React, TypeScript, Vite, Tailwind CSS, and Supabase. It provides a complete customer shopping experience together with a protected administrative dashboard for managing food items and orders.
 
-1. **Public E-Commerce Storefront**: Customers can browse authentic dishes, filter menu categories, search items, manage a dynamic shopping cart, and place orders.
-2. **Administrative Dashboard**: Protected management panel enabling business owners to manage menu inventory, update dish details, adjust prices, and toggle item availability in real-time.
+The project also includes a focused accessibility improvement layer based on WCAG-oriented practices, semantic HTML, keyboard navigation, accessible names, ARIA states, live-region announcements, and screen-reader testing preparation.
 
----
+### Main Interfaces
 
+- **Customer Storefront:** Browse dishes, search products, filter categories, manage the cart, authenticate, and place orders.
+- **Admin Dashboard:** Manage menu inventory, update prices and availability, and review customer orders through protected admin routes.
 
 ---
 
 ## ✨ Key Features
 
-- 🛒 **Dynamic Shopping Cart**: Real-time cart updates, item additions, quantity adjustments, and automatic total bill calculation.
-- 🔐 **Role-Based Access Control (RBAC)**: Secure authentication flow that differentiates between regular users and administrators.
-- 🎛️ **Admin Inventory Management**: Full administrative control to add, edit, or delete items and update prices dynamically.
-- 🎨 **Modern & Accessible UI**: Designed using **Tailwind CSS**, **Radix UI** primitives, and **Framer Motion** for smooth animations and high WCAG accessibility.
-- ⚡ **Lightning Fast Performance**: Built on **Vite** for fast load times, optimized code splitting, and instant Hot Module Replacement (HMR).
-- 📱 **Responsive Design**: Mobile-first architecture ensuring optimal user experience across mobile devices, tablets, and desktops.
+### Customer Experience
+
+- 🛒 Dynamic shopping cart with quantity controls and automatic total calculation
+- 🔎 Search and category filtering for dishes
+- 🔐 Customer authentication using Supabase
+- 📦 Order placement and order history
+- 📱 Responsive mobile-first interface
+- 🎨 Modern UI with Tailwind CSS, Radix UI, and Framer Motion
+
+### Admin Experience
+
+- 🛡️ Protected administrator dashboard
+- 🍽️ Add, edit, and delete menu items
+- 💰 Update item prices and availability
+- 📊 View order information and update order status
+- 🔑 Role-aware navigation and authentication flow
+
+### Accessibility Engineering
+
+- Semantic landmarks and heading structure
+- Skip link for keyboard and screen-reader users
+- Keyboard-accessible navigation and interactive controls
+- Visible focus indicators for keyboard navigation
+- Descriptive accessible names for buttons, inputs, links, and images
+- `aria-pressed` states for category and dashboard navigation controls
+- `aria-live` announcements for dynamic cart quantities and status messages
+- Accessible dialogs, forms, tables, lists, and fieldsets
+- Appropriate image alternative text and decorative icon handling
+- Accessibility documentation and an NVDA manual testing checklist
+
+> Accessibility implementation details and the manual testing checklist are available in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
+
+---
+
+## 🧪 Accessibility Testing Status
+
+The application has been updated with WCAG-oriented accessibility improvements and is prepared for manual assistive-technology validation.
+
+The repository includes a documented test plan covering:
+
+- Keyboard-only navigation
+- NVDA screen-reader navigation
+- Headings and landmarks
+- Forms and validation
+- Dialogs and focus behavior
+- Dynamic cart announcements
+- Admin tables and controls
+- Zoom, contrast, and reduced-motion checks
+
+**Note:** NVDA testing should only be described as completed after the flows have been manually tested on a local Windows environment with NVDA. Until then, the project should be described as having an NVDA testing plan prepared rather than claiming completed screen-reader testing.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: [React 18](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [Radix UI](https://www.radix-ui.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Backend & DB**: [Supabase](https://supabase.com/)
-- **Routing**: [React Router DOM v6](https://reactrouter.com/)
-- **Icons & UI Feedback**: Lucide React, Sonner
+- **Frontend Framework:** React 18
+- **Language:** TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **UI Components:** Radix UI
+- **Animations:** Framer Motion
+- **Backend and Database:** Supabase
+- **Routing:** React Router DOM v6
+- **Icons and Notifications:** Lucide React and Sonner
+- **Accessibility Focus:** Semantic HTML, WCAG-oriented patterns, ARIA, keyboard support, and NVDA test preparation
 
 ---
 
 ## 🚀 Getting Started
 
-Follow these steps to set up and run the project locally.
+Follow these steps to run the project locally.
 
 ### Prerequisites
 
-Ensure you have the following installed on your machine:
-- **Node.js** (v18.x or higher)
-- **npm** (v9.x or higher)
+Ensure the following are installed:
+
+- **Node.js** v18 or higher
+- **npm** v9 or higher
 
 ### Installation
 
-1. **Clone the Repository**
+1. **Clone the repository**
+
    ```bash
    git clone https://github.com/manikantavarma2889/telugu-ruchulu.git
    cd telugu-ruchulu
    ```
 
-2. **Install Dependencies**
+2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-3. **Configure Environment Variables**
-   Create a `.env.local` file in the root directory and configure your Supabase credentials:
+3. **Configure environment variables**
+
+   Create a `.env.local` file in the project root:
+
    ```env
    VITE_SUPABASE_URL=your_supabase_url
    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 
-4. **Run Development Server**
+4. **Start the development server**
+
    ```bash
    npm run dev
    ```
-   Open your browser and navigate to `http://localhost:5173`.
+
+5. Open `http://localhost:5173` in your browser.
+
+### Available Scripts
+
+```bash
+npm run dev       # Start the Vite development server
+npm run build     # Type-check and create a production build
+npm run lint      # Run ESLint checks
+npm run preview   # Preview the production build locally
+```
+
+---
+
+## ♿ Manual Accessibility Testing
+
+For the recommended NVDA validation process:
+
+1. Start the application locally with `npm run dev`.
+2. Launch NVDA on Windows.
+3. Test keyboard navigation using `Tab`, `Shift + Tab`, `Enter`, `Space`, and arrow keys.
+4. Review headings and landmarks using NVDA navigation commands.
+5. Test the storefront, category filters, product cards, cart dialog, authentication modal, and admin dashboard.
+6. Record results and issues using the checklist in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
+
+Do not claim that NVDA or another assistive technology was used until the test has actually been performed.
 
 ---
 
 ## 🌐 Live Application
 
-Experience the live app deployed on Vercel:
-👉 **[https://telugu-ruchulu.vercel.app/](https://telugu-ruchulu.vercel.app/)**
+Experience the deployed application on Vercel:
 
+👉 [Telugu Ruchulu Live Demo](https://telugu-ruchulu.vercel.app/)
+
+---
+
+## 📚 Documentation
+
+- [Accessibility Guide and NVDA Test Plan](./ACCESSIBILITY.md)
+- [GitHub Repository](https://github.com/manikantavarma2889/telugu-ruchulu)
+
+---
+
+## 📄 License
+
+This project is intended for learning, portfolio demonstration, and further development.
