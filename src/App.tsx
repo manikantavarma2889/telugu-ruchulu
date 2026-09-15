@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { SplashScreen } from "@/components/layout/SplashScreen";
 import { useState, useEffect } from "react";
 import { CustomerAuthModal } from "@/components/checkout/CustomerAuthModal";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/queryClient";
 
 function AppContent() {
     const { isAdminLoggedIn, isCustomerLoggedIn, showAuthModal, setShowAuthModal } = useStore();
@@ -58,14 +60,16 @@ function App() {
     };
 
     return (
-        <StoreProvider>
-            <CartProvider>
-                <BrowserRouter>
-                    {showSplash ? <SplashScreen onComplete={handleSplashComplete} /> : <AppContent />}
-                    <Toaster position="top-center" richColors />
-                </BrowserRouter>
-            </CartProvider>
-        </StoreProvider>
+        <QueryClientProvider client={queryClient}>
+            <StoreProvider>
+                <CartProvider>
+                    <BrowserRouter>
+                        {showSplash ? <SplashScreen onComplete={handleSplashComplete} /> : <AppContent />}
+                        <Toaster position="top-center" richColors />
+                    </BrowserRouter>
+                </CartProvider>
+            </StoreProvider>
+        </QueryClientProvider>
     );
 }
 
