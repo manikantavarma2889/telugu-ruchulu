@@ -1,1 +1,1 @@
-import '@testing-library/jest-dom/vitest';
+// Vitest setup file reserved for shared browser/test configuration.
