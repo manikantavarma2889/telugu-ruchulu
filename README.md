@@ -164,8 +164,6 @@ For the recommended NVDA validation process:
 5. Test the storefront, category filters, product cards, cart dialog, authentication modal, and admin dashboard.
 6. Record results and issues using the checklist in [`ACCESSIBILITY.md`](./ACCESSIBILITY.md).
 
-Do not claim that NVDA or another assistive technology was used until the test has actually been performed.
-
 ---
 
 ## 🌐 Live Application
@@ -179,7 +177,6 @@ Experience the deployed application on Vercel:
 ## 📚 Documentation
 
 - [Accessibility Guide and NVDA Test Plan](./ACCESSIBILITY.md)
-- [GitHub Repository](https://github.com/manikantavarma2889/telugu-ruchulu)
 
 ---
 
