@@ -1,18 +1,20 @@
-import { ReactNode } from 'react';
-import { MenuItem } from '../types';
+import { createContext, useContext, ReactNode } from 'react';
+import { CartItem, MenuItem } from '../types';
 import { toast } from 'sonner';
 import { useStore } from './StoreContext';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addItem, clearCart as clearReduxCart, removeItem } from '@/store/cartSlice';
 
 interface CartContextType {
-    cart: ReturnType<typeof useAppSelector>;
+    cart: CartItem[];
     addToCart: (item: MenuItem) => void;
     removeFromCart: (itemId: number) => void;
     clearCart: () => void;
     getCartTotal: () => number;
     getCartItemCount: () => number;
 }
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
     const dispatch = useAppDispatch();
@@ -50,10 +52,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
         </CartContext.Provider>
     );
 }
-
-import { createContext, useContext } from 'react';
-
-const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const useCart = () => {
     const context = useContext(CartContext);
