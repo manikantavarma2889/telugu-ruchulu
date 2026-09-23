@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
@@ -49,6 +50,11 @@ module.exports = (_, argv) => {
       ],
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(process.env.VITE_SUPABASE_URL || ''),
+        'import.meta.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(process.env.VITE_SUPABASE_ANON_KEY || ''),
+        'import.meta.env.VITE_RAZORPAY_KEY_ID': JSON.stringify(process.env.VITE_RAZORPAY_KEY_ID || ''),
+      }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'index.html'),
         title: 'Telugu Ruchulu - Authentic Flavors',
