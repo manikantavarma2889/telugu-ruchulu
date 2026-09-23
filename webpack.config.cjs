@@ -27,7 +27,7 @@ module.exports = (_, argv) => {
     module: {
       rules: [
         {
-          test: /\\.(ts|tsx)$/,
+          test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'ts-loader',
@@ -37,11 +37,11 @@ module.exports = (_, argv) => {
           },
         },
         {
-          test: /\\.css$/,
+          test: /\.css$/,
           use: ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
-          test: /\\.(png|jpe?g|gif|webp|svg|ico|woff2?|eot|ttf|otf)$/i,
+          test: /\.(png|jpe?g|gif|webp|svg|ico|woff2?|eot|ttf|otf)$/i,
           type: 'asset/resource',
           generator: {
             filename: 'assets/[name].[contenthash:8][ext]',
@@ -78,7 +78,7 @@ module.exports = (_, argv) => {
               maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
               runtimeCaching: [
                 {
-                  urlPattern: /\\.(?:png|jpg|jpeg|webp|svg|gif)$/i,
+                  urlPattern: /\.(?:png|jpg|jpeg|webp|svg|gif)$/i,
                   handler: 'CacheFirst',
                   options: {
                     cacheName: 'telugu-ruchulu-images',
