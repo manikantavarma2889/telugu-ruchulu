@@ -26,7 +26,7 @@
 
 **Telugu Ruchulu** is a modern Telugu cuisine e-commerce application built with React, TypeScript, Webpack, Tailwind CSS, and Supabase. It provides a complete customer shopping experience together with a protected administrative dashboard for managing food items, orders, and operational analytics.
 
-The project combines production-focused frontend patterns with automated testing and accessibility engineering. TanStack Query is used for server-state management, Recharts powers admin data visualization, Vitest covers reusable business logic, and Playwright covers browser-level customer flows.
+The project combines production-focused frontend patterns with automated testing, accessibility engineering, and modern deployment practices. Webpack 5 is used for application bundling, Redux Toolkit manages client-side cart state, TanStack Query manages server state, Workbox provides production PWA support, Recharts powers admin data visualization, Vitest covers reusable business logic, and Playwright covers browser-level customer flows.
 
 ### Main Interfaces
 
@@ -64,18 +64,16 @@ The project combines production-focused frontend patterns with automated testing
 - 🧭 **React Router:** Handles customer and protected administrative navigation.
 - 🧩 **Radix UI:** Provides accessible primitives for dialogs, forms, selects, toasts, and other interactive components.
 
-### Data Management & Application Architecture
+### Build, Deployment & Testing
 
-- ⚡ **TanStack Query:** Manages server-state lifecycle for menu and order data with query caching, refetching, loading/error handling, and invalidation after mutations.
-- 🗃️ **Supabase:** Provides authentication and the application database/backend services.
-- 🧭 **React Router:** Handles customer and protected administrative navigation.
-- 🧩 **Radix UI:** Provides accessible primitives for dialogs, forms, selects, toasts, and other interactive components.
-
-### Testing
-
+- 📦 **Webpack 5:** Application bundler for development and optimized production builds, with TypeScript, CSS, asset handling, code splitting, and content-hashed output.
+- 📱 **Workbox:** Generates the production service worker, precaches the application shell, caches images, and supports SPA navigation fallback.
+- 🌐 **Vercel:** Production deployment is configured to run `npm run build`, publish `dist`, and rewrite SPA routes to `index.html`.
+- 🔐 **Environment variables:** Supabase and Razorpay Vite-style variables are injected into the Webpack bundle through `DefinePlugin`.
 - 🧪 **Vitest:** Unit tests for reusable order analytics/business logic, with V8 coverage support.
 - 🎭 **Playwright:** Browser-based end-to-end testing for the customer storefront and critical user flows.
-- 🔍 **ESLint + TypeScript:** Static code-quality and type-checking through the existing build/lint workflow.
+- 🔍 **ESLint 9:** Static code-quality checks using the flat configuration format.
+- 🔷 **TypeScript:** Dedicated type-checking through `npm run typecheck`.
 
 ### Accessibility Engineering
 
@@ -120,7 +118,9 @@ For the detailed test record and testing procedure, see [`ACCESSIBILITY.md`](./A
 - React 18
 - TypeScript 5.3
 - Webpack 5
+- Webpack Dev Server
 - Redux Toolkit 2.12 + React Redux 9.3
+- Workbox PWA service worker
 - Progressive Web App (PWA) with Workbox service worker
 - Tailwind CSS 3.4
 - React Router DOM 6
@@ -146,8 +146,9 @@ For the detailed test record and testing procedure, see [`ACCESSIBILITY.md`](./A
 - Vitest 2.1.9
 - V8 coverage via `@vitest/coverage-v8`
 - Playwright 1.55
-- ESLint
+- ESLint 9
 - TypeScript type-checking
+- Webpack production build validation
 
 ### Accessibility
 
@@ -192,6 +193,7 @@ Ensure the following are installed:
    ```env
    VITE_SUPABASE_URL=your_supabase_url
    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   VITE_RAZORPAY_KEY_ID=your_razorpay_key_id
    ```
 
 4. **Start the development server**
