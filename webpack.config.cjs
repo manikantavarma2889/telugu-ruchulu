@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const webpack = require('webpack');
 
-module.exports = (_, argv) => {
+// Webpack 5 build configuration for the React/TypeScript application.\nmodule.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
