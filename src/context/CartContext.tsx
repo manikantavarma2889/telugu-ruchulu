@@ -1,7 +1,9 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import { CartItem, MenuItem } from '../types';
 import { toast } from 'sonner';
 import { useStore } from './StoreContext';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addItem, clearCart as clearReduxCart, removeItem } from '@/store/cartSlice';
 
 interface CartContextType {
     cart: CartItem[];
@@ -15,7 +17,8 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-    const [cart, setCart] = useState<CartItem[]>([]);
+    const dispatch = useAppDispatch();
+    const cart = useAppSelector(state => state.cart.items);
     const { isCustomerLoggedIn, setShowAuthModal } = useStore();
 
     const addToCart = (item: MenuItem) => {
@@ -25,40 +28,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
             return;
         }
 
-        setCart(prevCart => {
-            const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
-            if (existingItem) {
-                return prevCart.map(cartItem =>
-                    cartItem.id === item.id
-                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                        : cartItem
-                );
-            } else {
-                return [...prevCart, {
-                    ...item,
-                    quantity: 1
-                }];
-            }
-        });
+        dispatch(addItem(item));
         toast.success(`${item.name} added to cart!`);
     };
 
     const removeFromCart = (itemId: number) => {
-        setCart(prevCart => {
-            const existingItem = prevCart.find(cartItem => cartItem.id === itemId);
-            if (existingItem && existingItem.quantity > 1) {
-                return prevCart.map(cartItem =>
-                    cartItem.id === itemId
-                        ? { ...cartItem, quantity: cartItem.quantity - 1 }
-                        : cartItem
-                );
-            } else {
-                return prevCart.filter(cartItem => cartItem.id !== itemId);
-            }
-        });
+        dispatch(removeItem(itemId));
     };
 
-    const clearCart = () => setCart([]);
+    const clearCart = () => dispatch(clearReduxCart());
 
     const getCartTotal = () => {
         return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -80,5 +58,5 @@ export const useCart = () => {
     if (context === undefined) {
         throw new Error('useCart must be used within a CartProvider');
     }
-    return context; 
+    return context;
 };
