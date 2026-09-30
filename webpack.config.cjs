@@ -5,10 +5,11 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = (_, argv) => {
-  const isProduction = argv.mode === 'production';
+  const mode = argv.mode || 'development';
+  const isProduction = mode === 'production';
 
   return {
-    mode: argv.mode || 'development',
+    mode,
     entry: path.resolve(__dirname, 'src/main.tsx'),
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -51,6 +52,7 @@ module.exports = (_, argv) => {
     },
     plugins: [
       new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(mode),
         'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(process.env.VITE_SUPABASE_URL || ''),
         'import.meta.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(process.env.VITE_SUPABASE_ANON_KEY || ''),
         'import.meta.env.VITE_RAZORPAY_KEY_ID': JSON.stringify(process.env.VITE_RAZORPAY_KEY_ID || ''),
