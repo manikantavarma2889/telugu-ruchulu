@@ -1,4 +1,4 @@
-import { categories } from "@/data/mockData";
+import { categories } from "@/data/categories";
 
 interface CategoryFilterProps {
     selectedCategory: string;
@@ -19,10 +19,11 @@ export function CategoryFilter({ selectedCategory, onSelectCategory }: CategoryF
                             aria-pressed={isSelected}
                             aria-label={`Filter by ${category.name}${isSelected ? ", selected" : ""}`}
                             onClick={() => onSelectCategory(category.id)}
-                            className={`whitespace-nowrap px-4 py-2 rounded-full text-[13px] sm:text-sm font-semibold border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${isSelected
-                                ? "bg-[#3d4152] text-white border-[#3d4152] shadow-sm scale-95"
-                                : "bg-white text-[#3d4152] border-gray-200 hover:border-gray-400"
-                                }`}
+                            className={`whitespace-nowrap px-4 py-2 rounded-full text-[13px] sm:text-sm font-semibold border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+                                isSelected
+                                    ? "bg-[#3d4152] text-white border-[#3d4152] shadow-sm scale-95"
+                                    : "bg-white text-[#3d4152] border-gray-200 hover:border-gray-400"
+                            }`}
                         >
                             {category.name}
                         </button>
