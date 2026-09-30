@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import { MenuItem } from "@/types";
-import { categories } from "@/data/mockData";
+import { categories } from "@/data/categories";
 
 export function MenuManagement() {
     const { menuItems, addMenuItem, updateMenuItem, deleteMenuItem, resetMenuToDefaults } = useStore();
