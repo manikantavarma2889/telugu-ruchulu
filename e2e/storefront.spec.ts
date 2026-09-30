@@ -33,9 +33,9 @@ test.describe('Telugu Ruchulu storefront', () => {
   test('supports adding a dish to the cart and changing quantity', async ({ page }) => {
     const biryani = page.getByRole('article', { name: /Hyderabadi Biryani/i });
     await biryani.getByRole('button', { name: /add Hyderabadi Biryani to cart/i }).click();
-    await expect(page.getByRole('button', { name: /add one more Hyderabadi Biryani to cart/i })).toBeVisible();
-    await page.getByRole('button', { name: /add one more Hyderabadi Biryani to cart/i }).click();
-    await expect(page.getByRole('article', { name: /Hyderabadi Biryani, quantity 2/i })).toBeVisible();
+    await expect(biryani.getByLabel(/Hyderabadi Biryani, quantity 1/i)).toBeVisible();
+    await biryani.getByRole('button', { name: /add one more Hyderabadi Biryani to cart/i }).click();
+    await expect(biryani.getByLabel(/Hyderabadi Biryani, quantity 2/i)).toBeVisible();
   });
 
   test('serves the PWA manifest and registers a service worker', async ({ page, request }) => {
